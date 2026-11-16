@@ -22,6 +22,16 @@ with a local static HTTP server to preview clipboard behavior; HTTPS or localhos
 is needed for the Clipboard API. Without JavaScript, prompts remain selectable.
 Run focused checks with `node --test tests\site.test.cjs` (Node.js only, no dependencies).
 
+## Icon attribution
+
+`assets/copilot.webp` is the unmodified Microsoft Copilot icon displayed on
+[Microsoft's Cowork adoption page](https://adoption.microsoft.com/en-us/copilot/cowork/ai-user/),
+downloaded from [Microsoft's hosted asset](https://adoption.microsoft.com/wp-content/uploads/webp/2026/08/icon-microsoft-copilot.png.webp).
+The page uses the shared Copilot mark, not a separately identified Cowork logo.
+The icon is served locally, so visiting this site does not load it from Microsoft.
+Microsoft retains rights to its trademarks; this attendee resource does not imply
+Microsoft endorsement.
+
 ## Publishing
 
 GitHub Pages publishes the repository root from `main` (Settings > Pages >

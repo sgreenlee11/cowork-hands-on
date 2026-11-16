@@ -10,7 +10,7 @@ a:hover { color: var(--cp-accent); }
 .masthead, main, footer { width: min(1200px, calc(100% - 96px)); margin-inline: auto; }
 .masthead { display: flex; justify-content: space-between; align-items: center; padding-block: 28px; border-bottom: 1px solid var(--cp-border-strong); gap: 24px; }
 .brand { display: flex; align-items: center; gap: 12px; font-size: 22px; font-weight: 650; text-decoration: none; }
-.brand-mark { display: grid; place-items: center; width: 40px; height: 40px; background: var(--cp-accent); color: var(--cp-accent-fg); border-radius: 10px; font-weight: 500; }
+.brand-mark { display: block; width: 40px; height: 40px; flex-shrink: 0; object-fit: contain; }
 .brand-detail { font-size: 13px; font-weight: 400; color: var(--cp-text-soft); padding-left: 12px; border-left: 1px solid var(--cp-border-strong); }
 .masthead nav { display: flex; gap: 28px; font-size: 14px; font-weight: 600; }
 .masthead nav a { text-decoration: none; }
