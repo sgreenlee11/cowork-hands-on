@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Copy-ready prompts for your Microsoft 365 Copilot Cowork hands-on session.">
+  <meta name="referrer" content="no-referrer">
+  <link rel="icon" href="data:,">
+  <title>Cowork | Hands-on prompts</title>
+  <script>
+    (() => {
+      const param = new URLSearchParams(window.location.search).get("scoutTheme");
+      const theme = param === "light" || param === "dark"
+        ? param
+        : (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --cp-bg: #f7f4ef;
+      --cp-bg-elevated: #fcfbf8;
+      --cp-surface: #ffffff;
+      --cp-surface-soft: #f5f5f5;
+      --cp-border: #dedede;
+      --cp-border-strong: #919191;
+      --cp-text: #242424;
+      --cp-text-muted: #5c5c5c;
+      --cp-text-soft: #6f6f6f;
+      --cp-accent: #b11f4b;
+      --cp-accent-hover: #9a1a41;
+      --cp-accent-soft: rgba(177, 31, 75, 0.08);
+      --cp-accent-fg: #ffffff;
+      --cp-success: #16a34a;
+      --cp-danger: #dc2626;
+      --cp-warning: #f59e0b;
+      --cp-link: #0078d4;
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.12);
+      --cp-overlay: rgba(255, 255, 255, 0.8);
+      --cp-panel: rgba(255, 255, 255, 0.86);
+      --cp-panel-strong: rgba(255, 255, 255, 0.96);
+      --cp-sheen: rgba(255, 255, 255, 0.55);
+      --cp-highlight: rgba(177, 31, 75, 0.12);
+    }
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --cp-bg: #3d3b3a;
+      --cp-bg-elevated: #343231;
+      --cp-surface: #292929;
+      --cp-surface-soft: #2e2e2e;
+      --cp-border: #474747;
+      --cp-border-strong: #5f5f5f;
+      --cp-text: #dedede;
+      --cp-text-muted: #919191;
+      --cp-text-soft: #b0b0b0;
+      --cp-accent: #fd8ea1;
+      --cp-accent-hover: #fb7b91;
+      --cp-accent-soft: rgba(253, 142, 161, 0.14);
+      --cp-accent-fg: #1a1a1a;
+      --cp-success: #4ade80;
+      --cp-danger: #f87171;
+      --cp-warning: #fbbf24;
+      --cp-link: #4da6ff;
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
+      --cp-overlay: rgba(41, 41, 41, 0.88);
+      --cp-panel: rgba(41, 41, 41, 0.72);
+      --cp-panel-strong: rgba(41, 41, 41, 0.96);
+      --cp-sheen: rgba(255, 255, 255, 0.04);
+      --cp-highlight: rgba(253, 142, 161, 0.12);
+    }
+  </style>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to prompts</a>
+  <header class="masthead">
+    <a class="brand" href="./" aria-label="Cowork hands-on home"><span class="brand-mark" aria-hidden="true">c/</span> Cowork <span class="brand-detail">Hands-on</span></a>
+    <nav aria-label="Sessions"><a href="#intro">Intro</a><a href="#advanced">Advanced</a></nav>
+  </header>
+  <main id="main">
+    <section class="hero" aria-labelledby="page-title">
+      <div>
+        <p class="eyebrow">Microsoft 365 Copilot Cowork / Prompt collection</p>
+        <h1 id="page-title">Less setup.<br>More <em>doing.</em></h1>
+        <p class="lede">A few starting points for working with your own work context. Pick a prompt, copy it, and make it yours in Cowork.</p>
+      </div>
+      <aside class="how-to" aria-labelledby="how-title">
+        <h2 id="how-title">Your work. Your conversation.</h2>
+        <ol>
+          <li><span>01</span> Copy a prompt below.</li>
+          <li><span>02</span> Paste it into your own Cowork conversation. Replace [bracketed placeholders] there, privately.</li>
+          <li><span>03</span> Check sources and review every draft before sending or making changes.</li>
+        </ol>
+        <p>This page only shares text. It does not connect to WorkIQ, request credentials, or collect or store your work data.</p>
+      </aside>
+    </section>
+    <section id="intro" class="session" aria-labelledby="intro-title">
+      <div class="section-heading">
+        <div><p class="eyebrow">Session 01</p><h2 id="intro-title">Intro</h2></div>
+        <p>Four starting points. Choose what fits your day.</p>
+      </div>
+      <nav class="quick-links" aria-label="Intro options">
+        <a href="#calendar">01 / Calendar</a><a href="#project">02 / Project</a><a href="#meeting">03 / Meeting</a><a href="#competitor">04 / Competitor</a>
+      </nav>
+      <p class="context-note">Run these prompts in Cowork, not on this website. WorkIQ uses the work context you are permitted to access; available sources and capabilities depend on your setup. If something is unavailable, ask Cowork to flag the gap rather than guess.</p>
+      <div class="cards">
+        <article class="card" id="calendar">
+          <div class="card-top"><span class="option">Option 01</span><span class="output">Plan + draft messages</span></div>
+          <h3>Calendar health optimizer</h3>
+          <p class="card-description">Take a closer look at the next two weeks.</p>
+          <div class="prompt" id="prompt-calendar" tabindex="0" role="region" aria-label="Calendar prompt">Review my calendar for the next two weeks. Identify meetings I can likely decline - no agenda, too many attendees, low relevance to my role. Protect my existing focus blocks. Flag conflicts. Give me an action plan with draft decline messages for the low-priority meetings.
+
+Keep this as a plan and drafts for my review. Do not make calendar changes or send messages without my explicit approval.</div>
+          <div class="copy-row"><button type="button" data-copy="prompt-calendar" aria-label="Copy calendar prompt">Copy prompt <span aria-hidden="true">&#8599;</span></button><span class="copy-status" role="status" aria-live="polite" aria-atomic="true"></span></div>
+        </article>
+        <article class="card" id="project">
+          <div class="card-top"><span class="option">Option 02</span><span class="output">Word + Excel</span></div>
+          <h3>Cross-channel project consolidation</h3>
+          <p class="card-description">Bring the project conversation into one place.</p>
+          <div class="prompt" id="prompt-project" tabindex="0" role="region" aria-label="Project prompt">Search all my emails, Teams chats, and SharePoint files related to [project name] from the last month. Create a Word document organizing everything: key decisions made, open questions, responsible parties, timeline, and risks.
+
+Prepare a draft for my review. Flag missing information rather than inventing details.</div>
+          <div class="copy-row"><button type="button" data-copy="prompt-project" aria-label="Copy project prompt">Copy prompt <span aria-hidden="true">&#8599;</span></button><span class="copy-status" role="status" aria-live="polite" aria-atomic="true"></span></div>
+          <div class="follow-up">
+            <p class="eyebrow">Then, in the same conversation</p>
+            <div class="prompt" id="prompt-project-followup" tabindex="0" role="region" aria-label="Project follow-up prompt">Now turn the open questions and risks into a tracked Excel action list with owners, due dates, and status.
+
+Prepare a draft for my review. Mark unconfirmed owners or dates as to be confirmed.</div>
+            <div class="copy-row"><button type="button" class="secondary" data-copy="prompt-project-followup" aria-label="Copy project follow-up prompt">Copy follow-up <span aria-hidden="true">&#8599;</span></button><span class="copy-status" role="status" aria-live="polite" aria-atomic="true"></span></div>
+          </div>
+        </article>
+        <article class="card" id="meeting">
+          <div class="card-top"><span class="option">Option 03</span><span class="output">Email draft + Excel</span></div>
+          <h3>Meeting follow-up + action tracker</h3>
+          <p class="card-description">Turn a specific meeting into clear next steps.</p>
+          <div class="prompt" id="prompt-meeting" tabindex="0" role="region" aria-label="Meeting prompt">Summarize my meeting [meeting name or link]. Extract all action items with owners and deadlines. Draft a follow-up email to all attendees with the summary and next steps. Also create an Excel tracker for the action items with columns for owner, task, deadline, and status.
+
+Keep the email as a draft for my review and approval; do not send it. Mark any unconfirmed owners or deadlines as to be confirmed.</div>
+          <div class="copy-row"><button type="button" data-copy="prompt-meeting" aria-label="Copy meeting prompt">Copy prompt <span aria-hidden="true">&#8599;</span></button><span class="copy-status" role="status" aria-live="polite" aria-atomic="true"></span></div>
+        </article>
+        <article class="card" id="competitor">
+          <div class="card-top"><span class="option">Option 04</span><span class="output">Sourced PowerPoint brief</span></div>
+          <h3>Sourced competitor briefing</h3>
+          <p class="card-description">Connect external research with internal context.</p>
+          <div class="prompt" id="prompt-competitor" tabindex="0" role="region" aria-label="Competitor prompt">Deep research our competitor [competitor name]'s recent moves, announcements, and market positioning. Search my email and Teams for any internal discussions mentioning them. Create a PowerPoint competitive brief with: market overview, competitor moves, our positioning gaps, and recommended response - cite all sources.
+
+Prepare a draft for my review. Distinguish public research from internal discussions, flag unavailable sources, and do not invent facts or citations. Keep internal information and the resulting brief private in my Microsoft 365 workspace; do not upload them to this website or share without my approval.</div>
+          <div class="copy-row"><button type="button" data-copy="prompt-competitor" aria-label="Copy competitor prompt">Copy prompt <span aria-hidden="true">&#8599;</span></button><span class="copy-status" role="status" aria-live="polite" aria-atomic="true"></span></div>
+        </article>
+      </div>
+    </section>
+    <section id="advanced" class="session advanced" aria-labelledby="advanced-title">
+      <div><p class="eyebrow">Session 02</p><h2 id="advanced-title">Advanced</h2></div>
+      <p>Coming soon. No prompts here just yet.</p>
+    </section>
+  </main>
+  <footer><span>Cowork / Hands-on prompts</span><p>A public prompt shelf, not a place for your work data. Keep inputs and results in your own Microsoft 365 Copilot Cowork experience.</p><a href="#page-title">Back to top &#8593;</a></footer>
+</body>
+</html>
