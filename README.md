@@ -2,7 +2,8 @@
 
 Copy-ready Microsoft 365 Copilot Cowork prompts for in-person attendees.
 Intro has four options and a separate project follow-up. Advanced covers installing
-the What I did with Cowork skill and finding, testing, and building a custom skill.
+the What I did with Cowork skill, finding/testing/building a custom skill, and a
+filterable catalog of 40 examples adapted from the four supplied scenario decks.
 
 This is a static text-sharing resource, not a demo generator or Microsoft 365 integration.
 There are no analytics, credentials, forms, uploads, work-data storage, external fonts,
@@ -32,6 +33,9 @@ and organization policy; this website never installs a skill or reads work histo
 - `index.html`: visible prompts, session navigation, and instructions.
 - `styles.css`: responsive layout and light/dark styling.
 - `script.js`: clipboard copy with accessible feedback and a manual-selection fallback.
+- `catalog.json`: catalog backgrounds, inputs, outputs, adapted prompts, and source slide references.
+- `catalog.js`: local-only search and filters; it does not transmit or persist search terms.
+- `tools/render-catalog.cjs`: regenerates the catalog's static HTML from `catalog.json`.
 
 Keep all published text generic. Never add attendee inputs, work results, customer
 identifiers, screenshots, credentials, or private reference material.
@@ -39,6 +43,43 @@ No framework, package installation, or build step is needed. Serve this director
 with a local static HTTP server to preview clipboard behavior; HTTPS or localhost
 is needed for the Clipboard API. Without JavaScript, prompts remain selectable.
 Run focused checks with `node --test tests\site.test.cjs` (Node.js only, no dependencies).
+
+## Catalog selection and maintenance
+
+The catalog reviews the detailed, runnable scenarios in:
+
+- Copilot Cowork Nifty Fifty Scenarios: 10 selected detailed slides.
+- Copilot Cowork Task Pack for All Functions: 11 selected tasks.
+- Cowork Task Pack for Sales: 9 selected tasks.
+- Cowork Task Pack for Marketing: 11 selected tasks.
+
+The overlapping messaging-drift audits are combined into one entry with both source
+references, giving 40 entries from 41 eligible source examples. Overview-only ideas,
+testimonials, and internal presenter guidance are not catalog entries. Deck files,
+speaker notes, screenshots, customer names, and private reference files are not published.
+
+Selection permits Microsoft 365, uploaded files, web research, and Fabric IQ.
+Dynamics-dependent examples and dependencies on other partner connectors are
+excluded. Explicit file-based alternatives to optional CRM connections are
+retained and labeled; they never connect to or write back to a live CRM. Microsoft's
+Capital Markets role skill is not an external market-data connector. No supplied
+prompt explicitly requires Jira/Rovo; no Jira example was invented.
+
+Copilot-in-Word/Excel-only examples and specialized legal/DMS dependencies are
+excluded. The catalog is for trying Cowork tasks, not claiming feature availability
+in every tenant. Fabric examples identify their requirement, and all prompts ask
+for source evidence, gaps, one-run trials, private outputs, and separate approval
+before consequential actions. Automatic sends/schedules in source prompts are
+adapted to drafts and proposed schedules. Financial projections remain assumptions,
+not promised or measured savings.
+
+Edit `catalog.json`, then run `node tools\render-catalog.cjs`. Commit both the data
+and regenerated `index.html`. Check synchronization with
+`node tools\render-catalog.cjs --check`; tests also enforce it. Update the reviewed
+source coverage test if intentionally changing the selection. The generated HTML
+is committed, so GitHub Pages needs no build or runtime dependencies. Without
+JavaScript, all catalog entries and expandable prompts remain readable and
+selectable; JavaScript adds filters and Copy buttons.
 
 ## Icon attribution
 
