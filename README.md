@@ -21,6 +21,12 @@ task and produce a Cowork skill-building prompt. It does not execute either work
   is not an official Microsoft Cowork skill. Time/value outputs are estimates.
 - [Customize Copilot Cowork](https://learn.microsoft.com/en-us/copilot/cowork/cowork-customize):
   skill upload, guided creation, and testing in a new conversation.
+- Public task packs, linked beside the Advanced catalog:
+  [General](https://aka.ms/copilot-cowork-taskpack-general),
+  [Marketing](https://aka.ms/copilot-cowork-taskpack-marketing), and
+  [Sales](https://aka.ms/copilot-cowork-taskpack-sales).
+  These link to the public resources, not locally hosted copies. Attendees should
+  check each task's connector and access requirements.
 
 The ZIP is downloaded from the upstream repository, not mirrored here. When
 updating the link, use the installable skill ZIP from its README, not GitHub's

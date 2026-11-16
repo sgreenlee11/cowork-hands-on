@@ -22,6 +22,20 @@ test("intro retains four options and all session copy targets resolve uniquely",
   assert.match(html, /Then, in the same conversation/);
 });
 
+test("public task packs have descriptive links to the three supplied URLs", () => {
+  const resources = html.match(/<aside id="public-task-packs"[\s\S]*?<\/aside>/)?.[0];
+  assert.ok(resources, "Task pack resources are present outside the generated catalog");
+  assert.match(resources, /aria-labelledby="task-packs-title"/);
+  assert.match(resources, /id="task-packs-title">Public task packs<\/h4>/);
+  const links = [...resources.matchAll(/<a href="([^"]+)">([^<]+)<\/a>/g)]
+    .map(([, href, label]) => [href, label]);
+  assert.deepEqual(links, [
+    ["https://aka.ms/copilot-cowork-taskpack-general", "General"],
+    ["https://aka.ms/copilot-cowork-taskpack-marketing", "Marketing"],
+    ["https://aka.ms/copilot-cowork-taskpack-sales", "Sales"],
+  ]);
+});
+
 test("catalog is complete against the reviewed eligible source slides", () => {
   const expectedSlides = {
     functions: [6, 7, 11, 12, 13, 17, 18, 19, 20, 21, 22],
