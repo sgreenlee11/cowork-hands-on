@@ -13,7 +13,7 @@ document.querySelectorAll("[data-copy]").forEach((button) => {
         throw new Error("Clipboard is unavailable.");
       }
       await navigator.clipboard.writeText(prompt.textContent.trim());
-      status.textContent = "Copied. Paste into Cowork.";
+      status.textContent = `Copied. Paste into ${button.dataset.destination || "Cowork"}.`;
     } catch {
       const selection = window.getSelection();
       const range = document.createRange();

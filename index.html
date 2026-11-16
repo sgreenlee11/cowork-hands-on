@@ -151,9 +151,50 @@ Prepare a draft for my review. Distinguish public research from internal discuss
         </article>
       </div>
     </section>
-    <section id="advanced" class="session advanced" aria-labelledby="advanced-title">
-      <div><p class="eyebrow">Session 02</p><h2 id="advanced-title">Advanced</h2></div>
-      <p>Coming soon. No prompts here just yet.</p>
+    <section id="advanced" class="session" aria-labelledby="advanced-title">
+      <div class="section-heading">
+        <div><p class="eyebrow">Session 02</p><h2 id="advanced-title">Advanced</h2></div>
+        <p>Try a skill. Then build one around your own work.</p>
+      </div>
+      <nav class="quick-links" aria-label="Advanced activities">
+        <a href="#impact-skill">01 / Add a skill</a><a href="#custom-skill">02 / Build your own</a>
+      </nav>
+      <p class="context-note">Skills turn a repeatable process into reusable instructions. Only add skills you trust and that your organization permits. Keep your work history, examples, and reports in your own Microsoft 365 experience.</p>
+      <div class="cards">
+        <article class="card" id="impact-skill">
+          <div class="card-top"><span class="option">Part 01</span><span class="output">Use in Cowork</span></div>
+          <h3>What I did with Cowork</h3>
+          <p class="card-description">Use your own Cowork activity history to explore assistance received, business processes supported, skills augmented, and estimated value.</p>
+          <a class="download-link" href="https://raw.githubusercontent.com/microsoft/What-I-did-with-Cowork/main/cowork-roi-report-skill-v49.zip">Download skill ZIP (v49) <span aria-hidden="true">&#8595;</span></a>
+          <ol class="activity-steps">
+            <li><strong>Download and keep it zipped.</strong> This is the installable skill package, not the repository's source-code ZIP.</li>
+            <li><strong>Add it in Cowork.</strong> Open a new Cowork conversation, select <strong>+</strong>, attach the ZIP, and send <code>Add this skill.</code> Review any prompts before approving.</li>
+            <li><strong>Try it after installation is confirmed.</strong> Use the prompt below. A new account or limited history may not have enough activity for a useful report yet.</li>
+          </ol>
+          <p class="activity-note">If your interface uses the skill uploader, go to <strong>Customize &gt; Skills &gt; Add menu &gt; Upload skill</strong> and select the ZIP. See <a href="https://learn.microsoft.com/en-us/copilot/cowork/cowork-customize#upload-a-skill">Microsoft's upload instructions</a>.</p>
+          <div class="prompt" id="prompt-impact" tabindex="0" role="region" aria-label="Impact report prompt">Generate my impact summary report for the last 7 days. Run once only; do not schedule recurring runs, send email, or share the report. Flag missing history, explain assumptions, and treat time and value figures as estimates, not measured savings. Keep the report private for my review.</div>
+          <div class="copy-row"><button type="button" data-copy="prompt-impact" aria-label="Copy impact report prompt">Copy prompt <span aria-hidden="true">&#8599;</span></button><span class="copy-status" role="status" aria-live="polite" aria-atomic="true"></span></div>
+          <p class="activity-note">From the <a href="https://github.com/microsoft/What-I-did-with-Cowork">microsoft/What-I-did-with-Cowork repository</a>. Its authors describe this as an approach you can customize, <strong>not an official Microsoft Cowork skill</strong>. Review the source and methodology; reported value is an estimate, not a guarantee.</p>
+        </article>
+        <article class="card" id="custom-skill">
+          <div class="card-top"><span class="option">Part 02</span><span class="output">Start in Copilot Chat</span></div>
+          <h3>Build a skill around a proven task</h3>
+          <p class="card-description">Find what works before making it reusable.</p>
+          <ol class="activity-steps">
+            <li><strong>Pick a repeatable outcome.</strong> Choose a bounded task you do regularly, with accessible inputs and a result you can judge.</li>
+            <li><strong>Experiment in Cowork.</strong> Try a real example privately. Refine the prompt, sources, output, and review checklist until you can describe what good looks like.</li>
+            <li><strong>Capture the process, not the data.</strong> Ask Cowork to turn the approved approach into a skill with placeholders and approval gates. Test it on a second example in a new conversation before relying on it.</li>
+          </ol>
+          <p class="eyebrow">Copy into Microsoft 365 Copilot Chat</p>
+          <div class="prompt" id="prompt-skill-builder" tabindex="0" role="region" aria-label="Copilot Chat task discovery and skill-building prompt">Help me find one repeatable task from my work that is a good fit for a Cowork skill.
+
+Use my recent work context from the last two weeks, where available and permitted. Suggest three bounded tasks with recurring steps, accessible inputs, a clear output, and a way to judge quality. Cite the work signals behind each suggestion; flag missing access rather than guessing. If context is insufficient, ask about my role and recurring tasks. Recommend one and ask me to choose.
+
+After I choose, give me a concise, copy-ready prompt to paste into Cowork. Define the outcome, input placeholders, steps, output format, source citations, and a "what good looks like" checklist. Have Cowork test one example with me and refine the process. Only after I approve the approach, create a reusable skill with instructions and placeholders, not private examples. Include a second-example test and require my approval before sending, sharing, scheduling, or changing anything outside the skill.</div>
+          <div class="copy-row"><button type="button" data-copy="prompt-skill-builder" data-destination="Copilot Chat" aria-label="Copy Copilot Chat skill-building prompt">Copy Chat prompt <span aria-hidden="true">&#8599;</span></button><span class="copy-status" role="status" aria-live="polite" aria-atomic="true"></span></div>
+          <p class="activity-note">In Cowork, you can also start the guided builder from <strong>Customize &gt; Skills &gt; Add &gt; Create new</strong>. <a href="https://learn.microsoft.com/en-us/copilot/cowork/cowork-customize#manage-your-skills">Skill creation and testing guidance</a>.</p>
+        </article>
+      </div>
     </section>
   </main>
   <footer><span>Cowork / Hands-on prompts</span><p>A public prompt shelf, not a place for your work data. Keep inputs and results in your own Microsoft 365 Copilot Cowork experience.</p><a href="#page-title">Back to top &#8593;</a></footer>

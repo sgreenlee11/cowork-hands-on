@@ -1,13 +1,31 @@
 # cowork-hands-on
 
 Copy-ready Microsoft 365 Copilot Cowork prompts for in-person attendees.
-Intro has four options and a separate project follow-up. Advanced is intentionally empty.
+Intro has four options and a separate project follow-up. Advanced covers installing
+the What I did with Cowork skill and finding, testing, and building a custom skill.
 
 This is a static text-sharing resource, not a demo generator or Microsoft 365 integration.
 There are no analytics, credentials, forms, uploads, work-data storage, external fonts,
 or third-party scripts. Attendees replace bracketed placeholders privately in Cowork
 and review sources and drafts before sending messages or making changes.
 Available sources and capabilities depend on each attendee's setup and permissions.
+Advanced includes a copy-ready Copilot Chat prompt that helps attendees choose a
+task and produce a Cowork skill-building prompt. It does not execute either workflow.
+
+## Advanced content sources
+
+- [What I did with Cowork](https://github.com/microsoft/What-I-did-with-Cowork):
+  installation steps and the directly linked `cowork-roi-report-skill-v49.zip`
+  package (verified November 16, 2026). The upstream authors explicitly say this
+  is not an official Microsoft Cowork skill. Time/value outputs are estimates.
+- [Customize Copilot Cowork](https://learn.microsoft.com/en-us/copilot/cowork/cowork-customize):
+  skill upload, guided creation, and testing in a new conversation.
+
+The ZIP is downloaded from the upstream repository, not mirrored here. When
+updating the link, use the installable skill ZIP from its README, not GitHub's
+whole-repository archive. Confirm it downloads and contains a root `SKILL.md`.
+Skill availability and installation remain subject to the attendee's environment
+and organization policy; this website never installs a skill or reads work history.
 
 ## Editing
 
