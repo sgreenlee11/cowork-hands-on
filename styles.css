@@ -37,6 +37,14 @@ h1 em { font-style: normal; color: var(--cp-accent); }
 .quick-links a:hover { background: var(--cp-accent-soft); border-color: var(--cp-accent); }
 .context-note { max-width: 900px; font-size: 13px; color: var(--cp-text-soft); margin: 20px 0 28px; }
 .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
+.recommended { margin-block: 28px; border-top: 3px solid var(--cp-accent); }
+.recommended .prompt { max-width: 900px; }
+.optional-path { margin-top: 24px; padding: 20px; border: 1px solid var(--cp-border); border-radius: 16px; }
+.optional-path > summary { font-size: 17px; font-weight: 600; color: var(--cp-accent); padding-block: 8px; }
+.optional-path > .cards { margin-top: 24px; }
+.electives { margin-top: 40px; }
+.completion-check .activity-steps { font-size: 13px; margin-block: 16px; }
+.completion-check .activity-steps li { margin-block: 8px; }
 .card { background: var(--cp-surface); border: 1px solid var(--cp-border); border-radius: 16px; padding: 32px; min-width: 0; }
 .card-top { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
 .option { color: var(--cp-accent); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; }

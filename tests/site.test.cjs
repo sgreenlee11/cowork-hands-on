@@ -12,14 +12,75 @@ const prompts = [...html.matchAll(/class="prompt" id="([^"]+)"[^>]*>([\s\S]*?)<\
 const copyButtons = [...html.matchAll(/<button\b([^>]*data-copy="([^"]+)"[^>]*)>/g)];
 const targets = copyButtons.map((match) => match[2]);
 
-test("intro retains four options and all session copy targets resolve uniquely", () => {
+test("intro recommends one task and keeps alternatives collapsed; copy targets resolve uniquely", () => {
   const intro = html.split('<section id="intro"')[1].split("</section>")[0];
-  assert.equal((intro.match(/<article class="card"/g) || []).length, 4);
-  assert.equal((intro.match(/data-copy=/g) || []).length, 5);
-  assert.equal(prompts.length, catalog.length + 7);
+  const defaultPath = intro.split('<details id="intro-options"')[0];
+  assert.equal((defaultPath.match(/<article /g) || []).length, 1);
+  assert.match(defaultPath, /Recommended starting task/);
+  assert.match(defaultPath, /id="prompt-leadership"/);
+  assert.match(intro, /<details id="intro-options" class="optional-path">/);
+  assert.equal((intro.match(/data-copy=/g) || []).length, 8);
+  assert.equal(prompts.length, catalog.length + 13);
   assert.equal(new Set(targets).size, targets.length);
   assert.deepEqual(targets, prompts.map((prompt) => prompt[1]));
   assert.match(html, /Then, in the same conversation/);
+});
+
+test("every copied workflow keeps browser use off, including generated skills and catalog prompts", () => {
+  for (const [, id, prompt] of prompts) {
+    assert.match(prompt, /browser use OFF/i, id);
+    if (catalog.some((entry) => id === `prompt-${entry.id}`)) {
+      assert.match(prompt, /Do not use a local browser, fetch websites, or perform web research/);
+      assert.match(prompt, /approved extracts or exports I supply/);
+      assert.match(prompt, /Run once/);
+      assert.match(prompt, /two source-backed facts/);
+      assert.match(prompt, /one correction/);
+      assert.match(prompt, /compare effort/);
+    }
+  }
+  assert.match(html, /id="completion-check"/);
+  assert.match(html, /Use this check for Intro, skills, every catalog example, electives, and each automation test result/);
+  assert.doesNotMatch(html, /104 respondents|63 who|27%|25%|61%/);
+});
+
+test("new file-based tasks constrain sources and handle comparison and finance uncertainty", () => {
+  const get = (id) => prompts.find((prompt) => prompt[1] === id)[2];
+  const comparison = get("prompt-report-comparison");
+  assert.match(comparison, /Use only the two approved files I attach/);
+  assert.match(comparison, /baseline is nonzero and meaningful/);
+  assert.match(comparison, /cannot be compared reliably/);
+  assert.match(comparison, /Do not use connectors/);
+  const raid = get("prompt-project-raid");
+  for (const term of ["Risks", "Assumptions", "Issues", "Dependencies", "predecessor", "unconfirmed"]) {
+    assert.ok(raid.includes(term), term);
+  }
+  const finance = get("prompt-finance-close");
+  assert.match(finance, /Use only \[approved attached close reports/);
+  assert.match(finance, /tolerance status only where a tolerance is provided/);
+  assert.match(finance, /Do not force a tie/);
+  assert.match(finance, /Do not post journals.*professional assurance.*10-Q\/10-K/);
+});
+
+test("automation is a separate gated elective with actual-result inspection and verified cleanup", () => {
+  assert.match(html, /<details id="automation" class="optional-path">/);
+  assert.match(html, /<details class="catalog-prompt" id="event-trigger">/);
+  assert.match(html, /<details id="finance-close" class="optional-path">/);
+  for (const id of ["prompt-schedule", "prompt-event-trigger"]) {
+    const text = prompts.find((prompt) => prompt[1] === id)[2];
+    assert.match(text, /pilot owner/);
+    assert.match(text, /written plan/);
+    assert.match(text, /separate approval/);
+    assert.match(text, /pause or delete/);
+    assert.match(text, /verify cleanup|confirm cleanup/);
+    assert.match(text, /two source-backed facts/);
+    assert.match(text, /one correction/);
+    assert.match(text, /compare effort/);
+  }
+  assert.match(html, /Automations &gt; Runs/);
+  assert.match(html, /Automations &gt; Manage schedules/);
+  assert.match(html, /Canceling a conversation is not schedule cleanup/);
+  assert.match(html, /#schedule-prompts/);
+  assert.match(html, /#set-up-event-driven-tasks/);
 });
 
 test("public task packs have descriptive links to the three supplied URLs", () => {

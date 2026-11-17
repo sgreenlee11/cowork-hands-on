@@ -1,17 +1,50 @@
 # cowork-hands-on
 
 Copy-ready Microsoft 365 Copilot Cowork prompts for in-person attendees.
-Intro has four options and a separate project follow-up. Advanced covers installing
+Intro recommends one simple, file-grounded leadership update. A collapsed optional
+path offers generic two-report comparison and the four existing options, with a
+project follow-up and an elective RAID/dependency extension. Advanced covers installing
 the What I did with Cowork skill, finding/testing/building a custom skill, and a
 filterable catalog of 40 examples adapted from the four supplied scenario decks.
+Separate collapsed electives cover scheduling a reviewed task, an independently
+gated email/Teams trigger, and period-close reconciliation with variance commentary.
+The finance elective does not prepare filings or offer professional assurance.
 
 This is a static text-sharing resource, not a demo generator or Microsoft 365 integration.
 There are no analytics, credentials, forms, uploads, work-data storage, external fonts,
 or third-party scripts. Attendees replace bracketed placeholders privately in Cowork
 and review sources and drafts before sending messages or making changes.
 Available sources and capabilities depend on each attendee's setup and permissions.
+Browser use must remain OFF in every attendee workflow, including generated skills.
+Public-research examples require approved supplied extracts/exports, not website
+collection. A URL alone is not source content. Missing inputs or capabilities are
+reported rather than bypassed. Fabric IQ examples do not establish Power BI, Jira,
+or other connector access.
 Advanced includes a copy-ready Copilot Chat prompt that helps attendees choose a
 task and produce a Cowork skill-building prompt. It does not execute either workflow.
+
+Every hands-on option uses the shared completion check: verify two source-backed
+facts, identify one correction (or document none needed), and compare total effort
+with the normal process. Recalled baselines and savings remain estimates, not
+measured results. No survey percentages or private email/workbook content are
+published.
+
+## Optional automation follow-through
+
+The catalog remains run-once. Automation is a separate, explicit opt-in after a
+successful reviewed task and pilot-owner confirmation of capability and approval.
+Participants review exact instructions, sources/refresh, timing/time zone, private
+destination, and permissions before separately approving creation or activation.
+They inspect an actual run, perform the completion check, then pause/delete the
+exercise schedule or trigger and verify cleanup. An untested definition is not a
+completed exercise; missing capability/approval means a written plan only.
+This website creates no schedules, triggers, or external automation.
+
+Instructions follow [Schedule prompts](https://learn.microsoft.com/copilot/cowork/use-cowork#schedule-prompts)
+and [Set up event-driven tasks](https://learn.microsoft.com/copilot/cowork/use-cowork#set-up-event-driven-tasks),
+reviewed November 17, 2026. Documentation is not evidence that the pilot has access.
+The documented Automations Runs/Manage schedules views and trigger review card
+may differ from a participant's interface. Never use a workaround for missing access.
 
 ## Advanced content sources
 
@@ -64,7 +97,9 @@ references, giving 40 entries from 41 eligible source examples. Overview-only id
 testimonials, and internal presenter guidance are not catalog entries. Deck files,
 speaker notes, screenshots, customer names, and private reference files are not published.
 
-Selection permits Microsoft 365, uploaded files, web research, and Fabric IQ.
+Selection retains Microsoft 365, uploaded-file, public-research, and Fabric IQ
+scenarios, but the shared renderer adapts every copied prompt to the browser-OFF
+pilot: public research uses approved supplied extracts/exports only.
 Dynamics-dependent examples and dependencies on other partner connectors are
 excluded. Explicit file-based alternatives to optional CRM connections are
 retained and labeled; they never connect to or write back to a live CRM. Microsoft's
