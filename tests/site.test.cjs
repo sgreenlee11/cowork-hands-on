@@ -26,15 +26,17 @@ test("intro recommends one task and keeps alternatives collapsed; copy targets r
   assert.match(html, /Then, in the same conversation/);
 });
 
-test("pilot-adapted workflows retain browser boundaries without rewriting restored beginner prompts", () => {
-  const restored = ["prompt-calendar", "prompt-project", "prompt-project-followup", "prompt-meeting", "prompt-competitor"];
+test("attendee copy excludes internal browser restrictions and retains catalog safeguards", () => {
+  const renderer = fs.readFileSync(path.join(root, "tools", "render-catalog.cjs"), "utf8");
+  for (const content of [html, renderer, JSON.stringify(catalog)]) {
+    assert.doesNotMatch(content, /browser|do not (?:collect reports|fetch websites)|approved (?:supplied )?extracts (?:or exports I supply|instead of web collection)|public research needs/i);
+  }
   for (const [, id, prompt] of prompts) {
-    if (id !== "prompt-leadership" && !restored.includes(id)) {
-      assert.match(prompt, /browser use OFF/i, id);
-    }
     if (catalog.some((entry) => id === `prompt-${entry.id}`)) {
-      assert.match(prompt, /Do not use a local browser, fetch websites, or perform web research/);
-      assert.match(prompt, /approved extracts or exports I supply/);
+      assert.match(prompt, /Use approved sources relevant to this task and within my permissions/);
+      assert.match(prompt, /Do not assume connector access/);
+      assert.match(prompt, /explicit approval for each action/);
+      assert.match(prompt, /flag stale information and conflicts/);
       assert.match(prompt, /Run once/);
       assert.match(prompt, /two source-backed facts/);
       assert.match(prompt, /one correction/);

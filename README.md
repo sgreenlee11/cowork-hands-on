@@ -16,14 +16,11 @@ There are no analytics, credentials, forms, uploads, work-data storage, external
 or third-party scripts. Attendees replace bracketed placeholders privately in Cowork
 and review sources and drafts before sending messages or making changes.
 Available sources and capabilities depend on each attendee's setup and permissions.
-The internal pilot browser-OFF boundary remains unchanged; no browser capability
-is enabled by this site. The leadership prompt omits that internal instruction,
-and the original four beginner prompts and project follow-up retain their
-pre-expansion wording. Facilitators must still apply pilot access boundaries.
-Public-research examples require approved supplied extracts/exports, not website
-collection. A URL alone is not source content. Missing inputs or capabilities are
-reported rather than bypassed. Fabric IQ examples do not establish Power BI, Jira,
-or other connector access.
+Internal pilot configuration notes are not attendee-facing instructions.
+This site does not enable capabilities or change pilot settings. The original
+four beginner prompts and project follow-up retain their pre-expansion wording.
+Missing inputs or capabilities are reported rather than bypassed.
+Fabric IQ examples do not establish Power BI, Jira, or other connector access.
 Advanced includes a copy-ready Copilot Chat prompt that helps attendees choose a
 task and produce a Cowork skill-building prompt. It does not execute either workflow.
 
@@ -102,8 +99,8 @@ testimonials, and internal presenter guidance are not catalog entries. Deck file
 speaker notes, screenshots, customer names, and private reference files are not published.
 
 Selection retains Microsoft 365, uploaded-file, public-research, and Fabric IQ
-scenarios, but the shared renderer adapts every copied prompt to the browser-OFF
-pilot: public research uses approved supplied extracts/exports only.
+scenarios. The shared renderer adds source-access, evidence, completion-check,
+and action-approval safeguards, not internal pilot configuration instructions.
 Dynamics-dependent examples and dependencies on other partner connectors are
 excluded. Explicit file-based alternatives to optional CRM connections are
 retained and labeled; they never connect to or write back to a live CRM. Microsoft's
