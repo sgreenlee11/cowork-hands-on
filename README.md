@@ -1,7 +1,8 @@
 # cowork-hands-on
 
 Copy-ready Microsoft 365 Copilot Cowork prompts for in-person attendees.
-Intro recommends one simple, file-grounded leadership update. A collapsed optional
+Intro recommends a leadership update grounded in relevant Microsoft 365 work
+context, with flexible supporting formats. A collapsed optional
 path offers generic two-report comparison and the four existing options, with a
 project follow-up and an elective RAID/dependency extension. Advanced covers installing
 the What I did with Cowork skill, finding/testing/building a custom skill, and a
@@ -15,7 +16,10 @@ There are no analytics, credentials, forms, uploads, work-data storage, external
 or third-party scripts. Attendees replace bracketed placeholders privately in Cowork
 and review sources and drafts before sending messages or making changes.
 Available sources and capabilities depend on each attendee's setup and permissions.
-Browser use must remain OFF in every attendee workflow, including generated skills.
+The internal pilot browser-OFF boundary remains unchanged; no browser capability
+is enabled by this site. The leadership prompt omits that internal instruction,
+and the original four beginner prompts and project follow-up retain their
+pre-expansion wording. Facilitators must still apply pilot access boundaries.
 Public-research examples require approved supplied extracts/exports, not website
 collection. A URL alone is not source content. Missing inputs or capabilities are
 reported rather than bypassed. Fabric IQ examples do not establish Power BI, Jira,
@@ -121,6 +125,11 @@ source coverage test if intentionally changing the selection. The generated HTML
 is committed, so GitHub Pages needs no build or runtime dependencies. Without
 JavaScript, all catalog entries and expandable prompts remain readable and
 selectable; JavaScript adds filters and Copy buttons.
+The full catalog is collapsed by default with a native expand/collapse control.
+Search and filters stay visible and automatically reveal matching results or an
+empty state. Clearing all criteria (including Clear filters) minimizes the list.
+Direct links to catalog tasks reveal the target and clear conflicting filters.
+Without JavaScript, the list and individual prompts can still be expanded manually.
 
 ## Icon attribution
 

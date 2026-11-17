@@ -10,6 +10,8 @@
   const level = document.getElementById("catalog-level");
   const count = document.getElementById("catalog-count");
   const empty = document.getElementById("catalog-empty");
+  const list = document.getElementById("catalog-list");
+  const results = document.getElementById("catalog-results");
   const cards = Array.from(document.querySelectorAll(".catalog-card"), (element) => ({
     element,
     text: element.textContent.toLowerCase(),
@@ -28,6 +30,21 @@
     }
     count.textContent = `${visible} of ${cards.length} examples`;
     empty.hidden = visible !== 0;
+    list.open = Boolean(terms.length || role.value || connection.value || level.value);
+  }
+
+  function revealLinkedTask() {
+    const target = document.getElementById(window.location.hash.slice(1));
+    if (!target || !results.contains(target)) return;
+    for (const field of [search, role, connection, level]) field.value = "";
+    filter();
+    list.open = true;
+    let details = target.closest("details");
+    while (details) {
+      details.open = true;
+      details = details.parentElement.closest("details");
+    }
+    target.scrollIntoView();
   }
 
   search.addEventListener("input", filter);
@@ -39,4 +56,6 @@
   });
   filter();
   controls.hidden = false;
+  window.addEventListener("hashchange", revealLinkedTask);
+  revealLinkedTask();
 })();

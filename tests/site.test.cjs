@@ -26,9 +26,12 @@ test("intro recommends one task and keeps alternatives collapsed; copy targets r
   assert.match(html, /Then, in the same conversation/);
 });
 
-test("every copied workflow keeps browser use off, including generated skills and catalog prompts", () => {
+test("pilot-adapted workflows retain browser boundaries without rewriting restored beginner prompts", () => {
+  const restored = ["prompt-calendar", "prompt-project", "prompt-project-followup", "prompt-meeting", "prompt-competitor"];
   for (const [, id, prompt] of prompts) {
-    assert.match(prompt, /browser use OFF/i, id);
+    if (id !== "prompt-leadership" && !restored.includes(id)) {
+      assert.match(prompt, /browser use OFF/i, id);
+    }
     if (catalog.some((entry) => id === `prompt-${entry.id}`)) {
       assert.match(prompt, /Do not use a local browser, fetch websites, or perform web research/);
       assert.match(prompt, /approved extracts or exports I supply/);
@@ -41,6 +44,28 @@ test("every copied workflow keeps browser use off, including generated skills an
   assert.match(html, /id="completion-check"/);
   assert.match(html, /Use this check for Intro, skills, every catalog example, electives, and each automation test result/);
   assert.doesNotMatch(html, /104 respondents|63 who|27%|25%|61%/);
+});
+
+test("leadership uses flexible work context and a review gate without internal pilot copy", () => {
+  const leadership = prompts.find((prompt) => prompt[1] === "prompt-leadership")[2];
+  assert.doesNotMatch(leadership, /my manager|browser use OFF|no more than 200|one or two|Use only/i);
+  assert.match(leadership, /emails, Teams conversations, meeting notes, and project files/);
+  assert.match(leadership, /milestone table.*previous update.*presentation outline/);
+  assert.match(leadership, /cite supporting evidence/);
+  assert.match(leadership, /separate approval/);
+});
+
+test("original beginner prompts retain their pre-expansion wording", () => {
+  const expected = {
+    "prompt-calendar": "Review my calendar for the next two weeks. Identify meetings I can likely decline - no agenda, too many attendees, low relevance to my role. Protect my existing focus blocks. Flag conflicts. Give me an action plan with draft decline messages for the low-priority meetings.\n\nKeep this as a plan and drafts for my review. Do not make calendar changes or send messages without my explicit approval.",
+    "prompt-project": "Search all my emails, Teams chats, and SharePoint files related to [project name] from the last month. Create a Word document organizing everything: key decisions made, open questions, responsible parties, timeline, and risks.\n\nPrepare a draft for my review. Flag missing information rather than inventing details.",
+    "prompt-project-followup": "Now turn the open questions and risks into a tracked Excel action list with owners, due dates, and status.\n\nPrepare a draft for my review. Mark unconfirmed owners or dates as to be confirmed.",
+    "prompt-meeting": "Summarize my meeting [meeting name or link]. Extract all action items with owners and deadlines. Draft a follow-up email to all attendees with the summary and next steps. Also create an Excel tracker for the action items with columns for owner, task, deadline, and status.\n\nKeep the email as a draft for my review and approval; do not send it. Mark any unconfirmed owners or deadlines as to be confirmed.",
+    "prompt-competitor": "Deep research our competitor [competitor name]'s recent moves, announcements, and market positioning. Search my email and Teams for any internal discussions mentioning them. Create a PowerPoint competitive brief with: market overview, competitor moves, our positioning gaps, and recommended response - cite all sources.\n\nPrepare a draft for my review. Distinguish public research from internal discussions, flag unavailable sources, and do not invent facts or citations. Keep internal information and the resulting brief private in my Microsoft 365 workspace; do not upload them to this website or share without my approval.",
+  };
+  for (const [id, text] of Object.entries(expected)) {
+    assert.equal(prompts.find((prompt) => prompt[1] === id)[2].replace(/\r\n/g, "\n"), text, id);
+  }
 });
 
 test("new file-based tasks constrain sources and handle comparison and finance uncertainty", () => {
@@ -141,12 +166,12 @@ test("generated catalog HTML is current and provides a no-JavaScript reading pat
   assert.equal((html.match(/class="card catalog-card"/g) || []).length, catalog.length);
 });
 
-test("catalog filters combine search, role, connection and depth, with empty and reset states", () => {
+function setupCatalog(hash = "") {
   const elements = new Map();
   for (const id of ["catalog-controls", "catalog-search", "catalog-function", "catalog-connection",
-    "catalog-level", "catalog-count", "catalog-empty", "catalog-reset"]) {
+    "catalog-level", "catalog-count", "catalog-empty", "catalog-reset", "catalog-list", "catalog-results"]) {
     elements.set(id, {
-      value: "", hidden: true, textContent: "", handlers: {},
+      value: "", hidden: true, open: false, textContent: "", handlers: {},
       addEventListener(type, handler) { this.handlers[type] = handler; },
       focus() { this.focused = true; },
     });
@@ -156,20 +181,42 @@ test("catalog filters combine search, role, connection and depth, with empty and
     textContent: `${entry.title} ${entry.background} ${entry.inputs} ${entry.output} ${entry.prompt}`,
     hidden: false,
   }));
+  const promptDetails = { open: false, parentElement: { closest: () => elements.get("catalog-list") } };
+  const target = {
+    closest: () => promptDetails,
+    scrollIntoView() { this.scrolled = true; },
+  };
+  elements.set("prompt-launch", target);
+  elements.get("catalog-results").contains = (element) => element === target;
+  elements.get("catalog-list").parentElement = { closest: () => null };
+  const window = {
+    location: { hash }, handlers: {},
+    addEventListener(type, handler) { this.handlers[type] = handler; },
+  };
   vm.runInNewContext(fs.readFileSync(path.join(root, "catalog.js"), "utf8"), {
     document: {
       getElementById: (id) => elements.get(id),
       querySelectorAll: () => cards,
     },
+    window,
   });
-  const get = (id) => elements.get(`catalog-${id}`);
+  return { get: (id) => elements.get(`catalog-${id}`), cards, window, target, promptDetails };
+}
+
+test("catalog starts minimized and combines criteria, automatically revealing results and empty states", () => {
+  const { get, cards } = setupCatalog();
   assert.equal(get("controls").hidden, false);
+  assert.equal(get("list").open, false);
+  assert.match(html, /<details id="catalog-list" class="optional-path">/);
+  get("list").open = true;
+  assert.equal(cards.every((card) => !card.hidden), true);
   assert.equal(get("count").textContent, "40 of 40 examples");
   get("function").value = "Marketing";
   get("connection").value = "fabric";
   get("level").value = "Deep dive";
   get("search").value = "  LAUNCH   ";
   get("search").handlers.input();
+  assert.equal(get("list").open, true);
   const expected = catalog.filter((entry) => entry.function === "Marketing"
     && entry.connection === "fabric" && entry.level === "Deep dive"
     && `${entry.title} ${entry.background} ${entry.inputs} ${entry.output} ${entry.prompt}`.toLowerCase().includes("launch"));
@@ -179,10 +226,12 @@ test("catalog filters combine search, role, connection and depth, with empty and
   get("search").value = "no-example-matches-this";
   get("search").handlers.input();
   assert.equal(get("empty").hidden, false);
+  assert.equal(get("list").open, true);
   assert.equal(cards.every((card) => card.hidden), true);
   get("reset").handlers.click();
   assert.equal(cards.every((card) => !card.hidden), true);
   assert.equal(get("empty").hidden, true);
+  assert.equal(get("list").open, false);
   assert.equal(get("search").focused, true);
   assert.equal(get("count").textContent, "40 of 40 examples");
   get("search").value = "cUsToMeR  onboarding";
@@ -190,6 +239,35 @@ test("catalog filters combine search, role, connection and depth, with empty and
   const visible = cards.filter((card) => !card.hidden);
   assert.ok(visible.length > 0);
   assert.ok(visible.every((card) => /customer/i.test(card.textContent) && /onboarding/i.test(card.textContent)));
+  get("search").value = "";
+  get("search").handlers.input();
+  assert.equal(get("list").open, false);
+  for (const [field, value] of [["function", "Marketing"], ["connection", "fabric"], ["level", "Deep dive"]]) {
+    get(field).value = value;
+    get(field).handlers.change();
+    assert.equal(get("list").open, true, field);
+    get(field).value = "";
+    get(field).handlers.change();
+    assert.equal(get("list").open, false, field);
+  }
+});
+
+test("catalog deep links reveal nested prompts on load and after conflicting filters", () => {
+  const { get, window, target, promptDetails, cards } = setupCatalog("#prompt-launch");
+  assert.equal(get("list").open, true);
+  assert.equal(promptDetails.open, true);
+  assert.equal(target.scrolled, true);
+  get("search").value = "no-example-matches-this";
+  get("search").handlers.input();
+  get("list").open = false;
+  window.handlers.hashchange();
+  assert.equal(get("search").value, "");
+  assert.equal(get("list").open, true);
+  assert.equal(cards.every((card) => !card.hidden), true);
+  window.location.hash = "#intro";
+  get("reset").handlers.click();
+  window.handlers.hashchange();
+  assert.equal(get("list").open, false);
 });
 
 test("advanced links to an installable skill ZIP and separates Cowork and Chat prompts", () => {

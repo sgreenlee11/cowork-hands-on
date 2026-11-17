@@ -107,21 +107,21 @@
       </nav>
       <p class="context-note"><strong>Pilot boundary: browser use must remain OFF for every activity.</strong> Run prompts in Cowork, not here. Use approved attachments or permitted Microsoft 365 sources only; no browser-based collection or sign-in workaround. Sources and capabilities depend on your setup. If unavailable, supply an approved export or stop and flag the gap.</p>
       <article class="card recommended" id="leadership">
-        <div class="card-top"><span class="option">Recommended starting task</span><span class="output">One short status draft</span></div>
+        <div class="card-top"><span class="option">Recommended starting task</span><span class="output">Leadership brief + next steps</span></div>
         <h3>A leadership update you can review</h3>
-        <p class="card-description">Bring one or two approved project notes or status reports for a named week. Finish with a concise update, not a presentation or a new reporting system.</p>
-        <div class="prompt" id="prompt-leadership" tabindex="0" role="region" aria-label="Leadership update prompt">I need a short leadership update for [project or team] covering [week or period], so my manager can see progress, blockers, and decisions needed.
+        <p class="card-description">Turn the week's conversations, decisions, and project progress into a leadership-ready story. Start with a brief; shape the result around your audience.</p>
+        <div class="prompt" id="prompt-leadership" tabindex="0" role="region" aria-label="Leadership update prompt">I need a leadership update for [project or team] covering [week or period], so [audience] can see what changed, why it matters, and where their input could make a difference.
 
-1. Read the notes
-Use only the one or two approved notes or status reports I attach. Confirm their dates and scope. If they are missing or unreadable, ask for them and stop; do not search other systems.
+1. Pull the story together
+Use relevant emails, Teams conversations, meeting notes, and project files available to me, along with any materials I provide. Build on a previous update or our usual template if available. Identify the sources and period actually covered; flag missing access rather than assuming it.
 
-2. Find what matters
-Identify completed work, current priorities, blockers, and decisions needed. Cite the file and page, section, or row behind each fact. Flag stale information, conflicting accounts, and missing owners or dates. Separate confirmed facts from assumptions and proposed next steps.
+2. Surface what needs attention
+Connect progress, decisions, milestones, risks, and dependencies across those sources. Highlight meaningful changes, emerging themes, and the most important asks. Distinguish confirmed facts from assumptions and recommendations; cite supporting evidence and flag stale information, conflicting accounts, or missing owners and dates.
 
-3. Draft the update
-Write no more than 200 words with Progress, Next, and Help needed sections, followed by source references and unresolved questions. Use plain language. Mark unconfirmed owners or dates as to be confirmed.
+3. Build the leadership brief
+Draft a clear, concise update in my voice with an executive summary, progress and impact, priorities ahead, and decisions or help needed. Include proposed next steps and owners where supported. Suggest a useful way to bring the story to life, such as a milestone table, a comparison with the previous update, or a short presentation outline. Keep the main update easy to scan and put supporting detail and unresolved questions underneath.
 
-Keep browser use OFF. Run once. Keep the draft private for my review; do not send, share, schedule, or update source files. Help me verify two source-backed facts, identify one correction (or document that none was needed), and compare effort with my normal process without claiming estimated savings as measured results.</div>
+Show me the draft and recommendations before taking action. Do not send, share, schedule, or change existing files without my separate approval. Keep internal information private and do not invent facts or citations.</div>
         <div class="copy-row"><button type="button" data-copy="prompt-leadership" aria-label="Copy leadership update prompt">Copy prompt <span aria-hidden="true">&#8599;</span></button><span class="copy-status" role="status" aria-live="polite" aria-atomic="true"></span></div>
         <p class="activity-note">Done means a reviewed update with two verified facts. You can stop here.</p>
       </article>
@@ -165,22 +165,22 @@ Keep browser use OFF. Do not use connectors or collect more reports. Keep output
           <p class="card-description">Take a closer look at the next two weeks.</p>
           <div class="prompt" id="prompt-calendar" tabindex="0" role="region" aria-label="Calendar prompt">Review my calendar for the next two weeks. Identify meetings I can likely decline - no agenda, too many attendees, low relevance to my role. Protect my existing focus blocks. Flag conflicts. Give me an action plan with draft decline messages for the low-priority meetings.
 
-Use only my permitted calendar context; cite meeting dates and links, distinguish signals from assumptions, and flag missing agendas or access rather than guessing. Keep browser use OFF and run once. Keep this as a private plan and drafts for my review. Do not schedule recurring runs, make calendar changes, or send messages without my explicit approval for each action.</div>
+Keep this as a plan and drafts for my review. Do not make calendar changes or send messages without my explicit approval.</div>
           <div class="copy-row"><button type="button" data-copy="prompt-calendar" aria-label="Copy calendar prompt">Copy prompt <span aria-hidden="true">&#8599;</span></button><span class="copy-status" role="status" aria-live="polite" aria-atomic="true"></span></div>
         </article>
         <article class="card" id="project">
           <div class="card-top"><span class="option">Option 02</span><span class="output">Word + Excel</span></div>
           <h3>Cross-channel project consolidation</h3>
           <p class="card-description">Bring the project conversation into one place.</p>
-          <div class="prompt" id="prompt-project" tabindex="0" role="region" aria-label="Project prompt">Use approved emails, Teams chats, and SharePoint files I identify for [project name] from the last month, where permitted and available. Draft a Word project summary organizing key decisions made, open questions, responsible parties, timeline, and risks. Cite source links and dates, distinguish confirmed decisions from proposals, and flag stale or conflicting accounts.
+          <div class="prompt" id="prompt-project" tabindex="0" role="region" aria-label="Project prompt">Search all my emails, Teams chats, and SharePoint files related to [project name] from the last month. Create a Word document organizing everything: key decisions made, open questions, responsible parties, timeline, and risks.
 
-Keep browser use OFF and run once. Prepare a private draft for my review. Flag missing information rather than inventing details; ask for approved exports if access is missing. Do not send, share, schedule, or change existing files or records without separate approval.</div>
+Prepare a draft for my review. Flag missing information rather than inventing details.</div>
           <div class="copy-row"><button type="button" data-copy="prompt-project" aria-label="Copy project prompt">Copy prompt <span aria-hidden="true">&#8599;</span></button><span class="copy-status" role="status" aria-live="polite" aria-atomic="true"></span></div>
           <div class="follow-up">
             <p class="eyebrow">Then, in the same conversation</p>
             <div class="prompt" id="prompt-project-followup" tabindex="0" role="region" aria-label="Project follow-up prompt">Now turn the open questions and risks into a tracked Excel action list with owners, due dates, and status.
 
-Use only the reviewed project sources above and cite each action's evidence. Keep browser use OFF and run once. Prepare a private draft for my review. Mark unconfirmed owners or dates as to be confirmed; flag conflicting or missing evidence. Do not assign tasks, change existing records, send, share, or schedule anything.</div>
+Prepare a draft for my review. Mark unconfirmed owners or dates as to be confirmed.</div>
             <div class="copy-row"><button type="button" class="secondary" data-copy="prompt-project-followup" aria-label="Copy project follow-up prompt">Copy follow-up <span aria-hidden="true">&#8599;</span></button><span class="copy-status" role="status" aria-live="polite" aria-atomic="true"></span></div>
           </div>
           <details class="catalog-prompt" id="project-raid">
@@ -206,16 +206,16 @@ Keep browser use OFF. Run once, keep the draft private, and do not update plans,
           <p class="card-description">Turn a specific meeting into clear next steps.</p>
           <div class="prompt" id="prompt-meeting" tabindex="0" role="region" aria-label="Meeting prompt">Summarize my meeting [meeting name or link]. Extract all action items with owners and deadlines. Draft a follow-up email to all attendees with the summary and next steps. Also create an Excel tracker for the action items with columns for owner, task, deadline, and status.
 
-Use only the approved transcript or meeting notes I provide or identify and am permitted to access. Cite source passages; flag missing, stale, or conflicting information rather than guessing. Keep browser use OFF and run once. Keep all outputs private and the email as a draft for my review; do not send, share, schedule, or update existing files or tasks. Mark unconfirmed owners or deadlines as to be confirmed.</div>
+Keep the email as a draft for my review and approval; do not send it. Mark any unconfirmed owners or deadlines as to be confirmed.</div>
           <div class="copy-row"><button type="button" data-copy="prompt-meeting" aria-label="Copy meeting prompt">Copy prompt <span aria-hidden="true">&#8599;</span></button><span class="copy-status" role="status" aria-live="polite" aria-atomic="true"></span></div>
         </article>
         <article class="card" id="competitor">
           <div class="card-top"><span class="option">Option 04</span><span class="output">Sourced PowerPoint brief</span></div>
           <h3>Sourced competitor briefing</h3>
-          <p class="card-description">Connect approved announcement extracts with internal context. Bring the research; do not collect it through a browser.</p>
-          <div class="prompt" id="prompt-competitor" tabindex="0" role="region" aria-label="Competitor prompt">Analyze our competitor [competitor name]'s recent moves, announcements, and market positioning using only approved announcement extracts or reports I attach and relevant permitted email/Teams context I identify. Keep browser use OFF; do not fetch websites or use web research. Ask for missing approved inputs. Draft a PowerPoint competitive brief with market overview, competitor moves, our positioning gaps, and recommended response - cite file/page or message sources.
+          <p class="card-description">Connect external research with internal context.</p>
+          <div class="prompt" id="prompt-competitor" tabindex="0" role="region" aria-label="Competitor prompt">Deep research our competitor [competitor name]'s recent moves, announcements, and market positioning. Search my email and Teams for any internal discussions mentioning them. Create a PowerPoint competitive brief with: market overview, competitor moves, our positioning gaps, and recommended response - cite all sources.
 
-Run once. Prepare a draft for my review. Distinguish supplied public evidence, internal discussions, and recommendations; flag stale or conflicting evidence and unavailable sources, and do not invent facts or citations. Keep the brief private; do not send, share, schedule, or update source files without separate approval.</div>
+Prepare a draft for my review. Distinguish public research from internal discussions, flag unavailable sources, and do not invent facts or citations. Keep internal information and the resulting brief private in my Microsoft 365 workspace; do not upload them to this website or share without my approval.</div>
           <div class="copy-row"><button type="button" data-copy="prompt-competitor" aria-label="Copy competitor prompt">Copy prompt <span aria-hidden="true">&#8599;</span></button><span class="copy-status" role="status" aria-live="polite" aria-atomic="true"></span></div>
         </article>
       </div>
@@ -364,7 +364,10 @@ Keep browser use OFF and run once. Keep outputs private for finance review. Do n
           <button type="button" class="secondary" id="catalog-reset">Clear filters</button>
         </div>
         <div class="catalog-result-heading"><p id="catalog-count" role="status" aria-live="polite" aria-atomic="true">40 examples to explore</p><span>Prompts open in place. Nothing runs on this page.</span></div>
-        <noscript><p class="activity-note">All examples are shown below. Enable JavaScript for filters and Copy buttons, or select and copy any prompt manually.</p></noscript>
+        <p class="activity-note">Expand the list to browse, or use search and filters to show matching tasks. Clearing all criteria minimizes the list again.</p>
+        <noscript><p class="activity-note">Expand the task list below and select any prompt to copy it manually. Enable JavaScript for search, filters, and Copy buttons.</p></noscript>
+        <details id="catalog-list" class="optional-path">
+          <summary>Browse task list <span class="activity-note">(expand or collapse)</span></summary>
         <p id="catalog-empty" class="catalog-empty" hidden>No examples match these filters. Try fewer search words or choose Clear filters.</p>
         <div id="catalog-results" class="cards">
       <!-- catalog:start -->
@@ -1214,6 +1217,7 @@ Use only sources I am permitted to access. Cite evidence, label assumptions, fla
         </article>
       <!-- catalog:end -->
         </div>
+        </details>
       </div>
     </section>
   </main>
